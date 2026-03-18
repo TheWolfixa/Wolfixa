@@ -20,7 +20,7 @@ export default function OrderConfirmationPage({
       </h1>
       
       <p className="text-lg text-muted-foreground text-center max-w-md mb-8 leading-relaxed">
-        Thank you for your purchase. We've received your order and are getting it ready for shipment.
+        Thank you for your purchase. We've received your order and are getting it ready for shipment. You will pay via <strong className="text-foreground">Cash on Delivery</strong> when your order arrives.
       </p>
 
       {orderId && (

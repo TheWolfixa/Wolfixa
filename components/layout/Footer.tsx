@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Instagram, MapPin, Mail, ArrowRight } from 'lucide-react';
+import { Instagram, MapPin, Mail, ArrowRight, MessageCircle } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -93,6 +93,16 @@ export function Footer() {
             >
               <Instagram className="w-5 h-5 text-background" />
             </a>
+            {process.env.NEXT_PUBLIC_WHATSAPP_NUMBER && (
+              <a 
+                href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER.replace(/[^0-9]/g, '')}`} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-background/20 transition-colors px-0"
+              >
+                <MessageCircle className="w-5 h-5 text-background" />
+              </a>
+            )}
             <a 
               href={`mailto:hello@wolfixa.com`} 
               className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-background/20 transition-colors"

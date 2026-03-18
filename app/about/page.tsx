@@ -1,3 +1,9 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'About Us | Wolfixa',
+};
+
 export default function AboutPage() {
   return (
     <div className="bg-background min-h-screen">

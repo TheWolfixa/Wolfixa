@@ -127,6 +127,10 @@ export default function CheckoutPage() {
                   <span>Shipping</span>
                   <span className="font-semibold text-green-400">Free</span>
                 </div>
+                <div className="flex justify-between text-background/80 pt-2 border-t border-background/20">
+                  <span>Payment Method</span>
+                  <span className="font-semibold text-primary/80 uppercase">Cash on Delivery</span>
+                </div>
               </div>
               
               <div className="pt-6 border-t border-background/20 mb-8">

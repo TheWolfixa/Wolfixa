@@ -10,6 +10,8 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
+import { ProductManagement } from '@/components/admin/ProductManagement';
+import { AdminSalesChart } from '@/components/admin/AdminSalesChart';
 
 export const dynamic = 'force-dynamic';
 
@@ -45,6 +47,11 @@ export default async function AdminDashboardPage({
     .select('*, profiles(full_name, email)')
     .order('created_at', { ascending: false })
     .limit(10);
+    
+  const { data: allOrders } = await supabase
+    .from('orders')
+    .select('total, created_at')
+    .order('created_at', { ascending: true });
     
   const { data: products } = await supabase
     .from('products')
@@ -86,9 +93,18 @@ export default async function AdminDashboardPage({
               </div>
             </div>
 
-            <h2 className="text-2xl font-display font-bold mt-12 mb-6">Recent Orders</h2>
-            <div className="bg-card p-6 rounded-3xl border border-border shadow-sm overflow-x-auto">
-              {recentOrders && recentOrders.length > 0 ? (
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-12 mb-6">
+              <div className="lg:col-span-2">
+                <h2 className="text-2xl font-display font-bold mb-6">Revenue Overview</h2>
+                <div className="bg-card p-6 rounded-3xl border border-border shadow-sm">
+                  <AdminSalesChart orders={allOrders || []} />
+                </div>
+              </div>
+              
+              <div>
+                <h2 className="text-2xl font-display font-bold mb-6">Recent Orders</h2>
+                <div className="bg-card p-4 rounded-3xl border border-border shadow-sm overflow-x-auto">
+                  {recentOrders && recentOrders.length > 0 ? (
                 <Table>
                   <TableHeader>
                     <TableRow>
@@ -114,6 +130,8 @@ export default async function AdminDashboardPage({
               ) : (
                 <p className="text-muted-foreground">No recent orders.</p>
               )}
+                </div>
+              </div>
             </div>
           </div>
         )}
@@ -153,34 +171,7 @@ export default async function AdminDashboardPage({
         )}
 
         {tab === 'products' && (
-          <div className="space-y-6 animate-in fade-in duration-500">
-            <div className="flex justify-between items-center">
-              <h2 className="text-2xl font-display font-bold">Manage Products</h2>
-              {/* Future feature: <Button>Add Product</Button> */}
-            </div>
-            <div className="bg-card p-6 rounded-3xl border border-border shadow-sm overflow-x-auto">
-              <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Name</TableHead>
-                      <TableHead>Category</TableHead>
-                      <TableHead>Stock</TableHead>
-                      <TableHead className="text-right">Price</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {products?.map(product => (
-                      <TableRow key={product.id}>
-                        <TableCell className="font-medium">{product.name}</TableCell>
-                        <TableCell className="capitalize">{product.category}</TableCell>
-                        <TableCell>{product.stock}</TableCell>
-                        <TableCell className="text-right font-medium">${product.price.toFixed(2)}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-            </div>
-          </div>
+          <ProductManagement initialProducts={products || []} />
         )}
 
       </div>

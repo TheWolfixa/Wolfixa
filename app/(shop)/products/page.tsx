@@ -1,6 +1,11 @@
 import { createClient } from '@/lib/supabase/server';
 import { ProductGrid } from '@/components/products/ProductGrid';
 import { ProductFilters } from '@/components/products/ProductFilters';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Shop All Products | Wolfixa',
+};
 
 // Allow searchParams properly in Next.js 14 server components
 export const dynamic = 'force-dynamic';

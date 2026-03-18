@@ -17,7 +17,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Wolfixa | Premium E-commerce",
+  title: "Wolfixa | Premium Fashion & Lifestyle",
   description: "Modern, minimal, and premium e-commerce store.",
 };
 

@@ -5,8 +5,17 @@ import { Star, Truck, ShieldCheck, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { ProductGrid } from '@/components/products/ProductGrid';
 import { AddToCartButton } from './AddToCartButton'; // Using a client component for button interaction
+import { Metadata } from 'next';
 
 export const revalidate = 60; // optionally cache for 60 seconds
+
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+  const supabase = await createClient();
+  const { data: product } = await supabase.from('products').select('name').eq('id', params.id).single();
+  return {
+    title: product ? `${product.name} | Wolfixa` : 'Product Not Found | Wolfixa',
+  };
+}
 
 export default async function ProductDetailsPage({
   params,

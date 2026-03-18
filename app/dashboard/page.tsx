@@ -10,6 +10,17 @@ import {
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
 
+function getStatusClasses(status: string) {
+  switch (status.toLowerCase()) {
+    case 'pending': return 'bg-yellow-500/10 text-yellow-600 hover:bg-yellow-500/20 border-yellow-500/20';
+    case 'confirmed': return 'bg-blue-500/10 text-blue-600 hover:bg-blue-500/20 border-blue-500/20';
+    case 'shipped': return 'bg-purple-500/10 text-purple-600 hover:bg-purple-500/20 border-purple-500/20';
+    case 'delivered': return 'bg-green-500/10 text-green-600 hover:bg-green-500/20 border-green-500/20';
+    case 'cancelled': return 'bg-red-500/10 text-red-600 hover:bg-red-500/20 border-red-500/20';
+    default: return 'bg-secondary text-secondary-foreground';
+  }
+}
+
 export default async function DashboardPage() {
   const supabase = await createClient();
 
@@ -66,8 +77,8 @@ export default async function DashboardPage() {
                       </TableCell>
                       <TableCell>
                         <Badge 
-                          variant={order.status === 'delivered' ? 'default' : order.status === 'pending' ? 'secondary' : 'outline'}
-                          className="capitalize"
+                          variant="outline"
+                          className={`capitalize border ${getStatusClasses(order.status)}`}
                         >
                           {order.status}
                         </Badge>

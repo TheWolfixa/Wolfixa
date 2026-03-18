@@ -33,6 +33,9 @@ export function CartItem({ item }: CartItemProps) {
             {item.name}
           </Link>
           <p className="text-sm text-muted-foreground">{item.category}</p>
+          {item.size && (
+            <p className="text-sm text-foreground/80 mt-1">Size: <span className="font-semibold">{item.size}</span></p>
+          )}
           <p className="font-semibold sm:hidden">${(item.price * item.quantity).toFixed(2)}</p>
         </div>
 
@@ -40,7 +43,7 @@ export function CartItem({ item }: CartItemProps) {
         <div className="flex items-center gap-6">
           <div className="flex items-center border border-border rounded-full h-10 w-28 bg-background">
             <button
-              onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))}
+              onClick={() => updateQuantity(item.cartItemId, Math.max(1, item.quantity - 1))}
               className="flex-1 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
               disabled={item.quantity <= 1}
             >
@@ -50,7 +53,7 @@ export function CartItem({ item }: CartItemProps) {
               {item.quantity}
             </span>
             <button
-              onClick={() => updateQuantity(item.id, item.quantity + 1)}
+              onClick={() => updateQuantity(item.cartItemId, item.quantity + 1)}
               className="flex-1 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
             >
               <Plus className="w-4 h-4" />
@@ -65,7 +68,7 @@ export function CartItem({ item }: CartItemProps) {
             variant="ghost"
             size="icon"
             className="text-muted-foreground hover:text-destructive hover:bg-destructive/10 shrink-0"
-            onClick={() => removeItem(item.id)}
+            onClick={() => removeItem(item.cartItemId)}
           >
             <Trash2 className="w-5 h-5" />
             <span className="sr-only">Remove item</span>
