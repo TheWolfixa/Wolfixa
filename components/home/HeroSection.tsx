@@ -28,50 +28,54 @@ export function HeroSection() {
         />
       </div>
 
-      <div className="container relative z-10 mx-auto px-4 flex flex-col items-center text-center">
+      <div className="container relative z-10 mx-auto px-4 flex flex-col items-center justify-center min-h-[90vh] text-center">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl mx-auto space-y-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, ease: 'easeOut' }}
+          className="max-w-4xl mx-auto flex flex-col items-center justify-center space-y-8"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-          >
-            <span className="inline-block py-1 px-3 rounded-full bg-secondary text-secondary-foreground text-sm font-medium mb-6 tracking-wide">
-              ELEVATE YOUR AESTHETIC
-            </span>
-          </motion.div>
-          
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight text-foreground leading-[1.1]">
-            Curated for the
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-extrabold tracking-tighter text-foreground leading-[1.05] md:leading-[1.05]">
+            Crafted for the
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground to-foreground/50">
-              Modern Minimalist
-            </span>
+            <motion.span 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="font-semibold text-foreground/80 block mt-2"
+            >
+              Bold
+            </motion.span>
           </h1>
           
           <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="text-lg md:text-xl text-muted-foreground/90 max-w-2xl mx-auto leading-relaxed font-medium"
           >
-            Discover our premium collection of essentials. Designed with precision, crafted for durability, and styled for those who appreciate true quality.
+            Elevate your everyday essentials with timeless design and unmatched quality.
           </motion.p>
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.5 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+            transition={{ delay: 0.7, duration: 0.6 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-5 pt-6 w-full sm:w-auto"
           >
-            <Button size="lg" className="rounded-full w-full sm:w-auto text-base h-14 px-8" render={<Link href="/products" />}>
+            <Button 
+              size="lg" 
+              className="rounded-full w-full sm:w-auto text-base h-14 px-10 bg-foreground text-background hover:bg-foreground/90 hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(0,0,0,0.1)] transition-all duration-300 dark:bg-foreground dark:text-background" 
+              render={<Link href="/products" />}
+            >
               Shop Collection <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
-            <Button size="lg" variant="outline" className="rounded-full w-full sm:w-auto text-base h-14 px-8 backdrop-blur-sm" render={<Link href="/about" />}>
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="rounded-full w-full sm:w-auto text-base h-14 px-10 border-border hover:bg-secondary/50 transition-all duration-300 backdrop-blur-sm" 
+              render={<Link href="/about" />}
+            >
               Our Story
             </Button>
           </motion.div>
