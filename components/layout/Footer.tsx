@@ -13,7 +13,7 @@ export function Footer() {
             Wolfixa.
           </Link>
           <p className="text-sm text-background/70 leading-relaxed max-w-xs">
-            Premium, modern essentials designed for those who appreciate clean aesthetics and supreme quality.
+            Premium Electronics & Clothing for the Modern Generation
           </p>
         </div>
 
@@ -29,6 +29,16 @@ export function Footer() {
             <li>
               <Link href="/products?category=new" className="text-sm text-background/70 hover:text-background transition-colors">
                 New Arrivals
+              </Link>
+            </li>
+            <li>
+              <Link href="/products?category=electronics" className="text-sm text-background/70 hover:text-background transition-colors">
+                Electronics
+              </Link>
+            </li>
+            <li>
+              <Link href="/products?category=clothing" className="text-sm text-background/70 hover:text-background transition-colors">
+                Clothing
               </Link>
             </li>
             <li>
@@ -61,6 +71,11 @@ export function Footer() {
             <li>
               <Link href="/terms" className="text-sm text-background/70 hover:text-background transition-colors">
                 Terms of Service
+              </Link>
+            </li>
+            <li>
+              <Link href="/refund" className="text-sm text-background/70 hover:text-background transition-colors">
+                Refund Policy
               </Link>
             </li>
           </ul>
@@ -115,7 +130,7 @@ export function Footer() {
 
       <div className="container mx-auto px-4 mt-16 pt-8 border-t border-background/10 flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="text-sm text-background/50">
-          © {new Date().getFullYear()} Wolfixa. All rights reserved.
+          © 2026 Wolfixa. All rights reserved. Made with ❤️ in India
         </p>
         <div className="flex items-center gap-2 text-sm text-background/50">
           <MapPin className="w-4 h-4" />

@@ -40,10 +40,10 @@ export function FeaturedProducts() {
             className="max-w-2xl"
           >
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 tracking-tight">
-              Featured Essentials
+              Handpicked For You
             </h2>
             <p className="text-muted-foreground text-lg">
-              Our most loved pieces, handpicked to elevate your everyday style.
+              Our most loved Electronics & Clothing — curated for quality and style
             </p>
           </motion.div>
           <motion.div

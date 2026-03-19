@@ -35,8 +35,17 @@ export function HeroSection() {
           transition={{ duration: 1, ease: 'easeOut' }}
           className="max-w-4xl mx-auto flex flex-col items-center justify-center space-y-8"
         >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+          >
+            <span className="inline-block py-1.5 px-4 rounded-full bg-secondary/80 text-foreground text-xs md:text-sm font-bold mb-6 tracking-widest border border-border/50">
+              ✦ ELECTRONICS & CLOTHING
+            </span>
+          </motion.div>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-extrabold tracking-tighter text-foreground leading-[1.05] md:leading-[1.05]">
-            Crafted for the
+            Wolfixa —
             <br />
             <motion.span 
               initial={{ opacity: 0, y: 10 }}
@@ -44,7 +53,7 @@ export function HeroSection() {
               transition={{ delay: 0.3, duration: 0.8 }}
               className="font-semibold text-foreground/80 block mt-2"
             >
-              Bold
+              Redefining Everyday Style
             </motion.span>
           </h1>
           
@@ -54,7 +63,7 @@ export function HeroSection() {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="text-lg md:text-xl text-muted-foreground/90 max-w-2xl mx-auto leading-relaxed font-medium"
           >
-            Elevate your everyday essentials with timeless design and unmatched quality.
+            Discover premium Electronics & Clothing crafted for modern lifestyles — where design meets durability.
           </motion.p>
           
           <motion.div
@@ -68,7 +77,7 @@ export function HeroSection() {
               className="rounded-full w-full sm:w-auto text-base h-14 px-10 bg-foreground text-background hover:bg-foreground/90 hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(0,0,0,0.1)] transition-all duration-300 dark:bg-foreground dark:text-background" 
               render={<Link href="/products" />}
             >
-              Shop Collection <ArrowRight className="ml-2 w-5 h-5" />
+              Explore Collection <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
             <Button 
               size="lg" 
@@ -78,6 +87,19 @@ export function HeroSection() {
             >
               Our Story
             </Button>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 1 }}
+            className="pt-10 flex items-center justify-center text-sm md:text-base text-muted-foreground font-medium flex-wrap gap-2 md:gap-4"
+          >
+            <span>10,000+ Happy Customers</span>
+            <span className="hidden sm:inline text-border/60">•</span>
+            <span>500+ Premium Products</span>
+            <span className="hidden sm:inline text-border/60">•</span>
+            <span>4.9★ Average Rating</span>
           </motion.div>
         </motion.div>
       </div>

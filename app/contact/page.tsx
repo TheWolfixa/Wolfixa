@@ -12,9 +12,9 @@ export default function ContactPage() {
     <div className="bg-background min-h-[80vh] py-16">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h1 className="text-4xl md:text-6xl font-display font-bold mb-6">Get in Touch</h1>
+          <h1 className="text-4xl md:text-6xl font-display font-bold mb-6">Get In Touch</h1>
           <p className="text-lg text-muted-foreground">
-            Have a question about an order, styling advice, or just want to say hello? We'd love to hear from you.
+            Have a question? We would love to hear from you. Send us a message and we will respond within 24 hours.
           </p>
         </div>
 
@@ -37,9 +37,9 @@ export default function ContactPage() {
                 <Phone className="w-6 h-6 text-foreground" />
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-2">Call Us</h3>
-                <p className="text-muted-foreground mb-1">+1 (555) 123-4567</p>
-                <p className="text-sm text-muted-foreground">Mon-Fri, 9am - 6pm EST</p>
+                <h3 className="text-xl font-bold mb-2">WhatsApp</h3>
+                <p className="text-muted-foreground mb-1">Chat with us on WhatsApp</p>
+                <a href="https://wa.me/910000000000" className="text-sm font-medium hover:underline">Message Us →</a>
               </div>
             </div>
 
@@ -48,9 +48,9 @@ export default function ContactPage() {
                 <MapPin className="w-6 h-6 text-foreground" />
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-2">Visit Studio</h3>
-                <p className="text-muted-foreground mb-1">100 Premium Way, Suite 400</p>
-                <p className="text-muted-foreground">New York, NY 10001</p>
+                <h3 className="text-xl font-bold mb-2">Store Hours</h3>
+                <p className="text-muted-foreground mb-1">Mon–Sat, 10AM – 7PM IST</p>
+                <p className="text-muted-foreground">Online Support Available 24/7</p>
               </div>
             </div>
           </div>
@@ -59,29 +59,23 @@ export default function ContactPage() {
           <div className="bg-card p-8 rounded-3xl border border-border shadow-sm">
             <h2 className="text-2xl font-bold mb-6">Send a Message</h2>
             <form className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">First Name</label>
-                  <Input placeholder="Jane" className="h-12 rounded-xl" />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Last Name</label>
-                  <Input placeholder="Doe" className="h-12 rounded-xl" />
-                </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Your Name</label>
+                <Input placeholder="John Doe" className="h-12 rounded-xl" />
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium">Email Address</label>
-                <Input type="email" placeholder="jane@example.com" className="h-12 rounded-xl" />
+                <Input type="email" placeholder="john@example.com" className="h-12 rounded-xl" />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium">Message</label>
+                <label className="text-sm font-medium">Your Message</label>
                 <textarea 
                   className="flex min-h-[150px] w-full rounded-xl border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 resize-none"
                   placeholder="How can we help you?"
                 />
               </div>
-              <Button size="lg" className="w-full h-14 rounded-xl font-semibold text-base">
-                Send Message
+              <Button size="lg" className="w-full h-14 rounded-xl font-semibold text-base flex items-center justify-center gap-2 group">
+                Send Message <span className="group-hover:translate-x-1 transition-transform">→</span>
               </Button>
             </form>
           </div>
