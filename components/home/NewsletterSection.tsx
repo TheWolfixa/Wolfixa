@@ -49,7 +49,7 @@ export function NewsletterSection() {
             Join the Wolfixa Club
           </h2>
           <p className="text-background/80 text-lg mb-8 max-w-lg mx-auto leading-relaxed">
-            Subscribe for exclusive deals, new arrivals, and members-only offers. No spam, ever.
+            Be the first to know about new arrivals, exclusive deals, and special offers. No spam, ever.
           </p>
           
           <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
@@ -72,7 +72,7 @@ export function NewsletterSection() {
             </Button>
           </form>
           <p className="text-xs text-background/50 mt-4">
-            Join 10,000+ members. Unsubscribe anytime.
+            Join our growing community. Unsubscribe anytime.
           </p>
         </motion.div>
       </div>

@@ -3,18 +3,17 @@ import { ProductGrid } from '@/components/products/ProductGrid';
 import { ProductFilters } from '@/components/products/ProductFilters';
 import { Metadata } from 'next';
 
+import { Suspense } from 'react';
+
 export const metadata: Metadata = {
   title: 'Shop All Products | Wolfixa',
 };
 
 // Allow searchParams properly in Next.js 14 server components
 export const dynamic = 'force-dynamic';
+export const revalidate = 3600;
 
-export default async function ProductsPage({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
+async function ProductsList({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
   const supabase = await createClient();
   
   const category = typeof searchParams.category === 'string' ? searchParams.category : undefined;
@@ -38,12 +37,29 @@ export default async function ProductsPage({
   } else if (sort === 'price-desc') {
     query = query.order('price', { ascending: false });
   } else {
-    // newest
     query = query.order('created_at', { ascending: false });
   }
 
   const { data: products } = await query;
 
+  return (
+    <>
+      {products && products.length > 0 ? (
+        <div className="mb-6 flex justify-between items-center text-sm text-muted-foreground">
+          <p>Showing {products.length} results</p>
+        </div>
+      ) : null}
+      
+      <ProductGrid products={products || []} isLoading={false} />
+    </>
+  );
+}
+
+export default async function ProductsPage({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
   return (
     <div className="bg-background min-h-screen pb-24">
       {/* Header */}
@@ -61,13 +77,9 @@ export default async function ProductsPage({
       </div>
 
       <div className="container mx-auto px-4">
-        {products && products.length > 0 ? (
-          <div className="mb-6 flex justify-between items-center text-sm text-muted-foreground">
-            <p>Showing {products.length} results</p>
-          </div>
-        ) : null}
-        
-        <ProductGrid products={products || []} isLoading={false} />
+        <Suspense fallback={<ProductGrid products={[]} isLoading={true} />}>
+          <ProductsList searchParams={searchParams} />
+        </Suspense>
       </div>
     </div>
   );

@@ -50,20 +50,23 @@ export function ProductCard({ product }: ProductCardProps) {
       className="group relative flex flex-col bg-card rounded-2xl shadow-sm border border-border overflow-hidden"
     >
       {/* Image Container */}
-      <Link href={`/products/${product.id}`} className="relative h-72 overflow-hidden bg-secondary">
-        <Badge className="absolute top-4 left-4 z-10 bg-background text-foreground hover:bg-background/90 px-3 py-1 text-xs font-semibold backdrop-blur-md">
+      <div className="relative h-72 overflow-hidden bg-secondary">
+        <Link href={`/products/${product.id}`} className="absolute inset-0 z-0">
+          <span className="sr-only">View product</span>
+        </Link>
+        <Badge className="absolute top-4 left-4 z-10 bg-background text-foreground hover:bg-background/90 px-3 py-1 text-xs font-semibold backdrop-blur-md pointer-events-none">
           {product.category}
         </Badge>
         {!hasStock && (
-          <Badge variant="destructive" className="absolute top-4 right-4 z-10">
+          <Badge variant="destructive" className="absolute top-4 right-4 z-10 pointer-events-none">
             Out of Stock
           </Badge>
         )}
         <Image
-          src={product.images[0] || '/placeholder.png'}
-          alt={product.name}
+          src={product.images?.[0] || '/placeholder.png'}
+          alt={product.name || 'Product'}
           fill
-          className="object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
+          className="object-cover transition-transform duration-700 ease-in-out group-hover:scale-105 pointer-events-none"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         
@@ -72,7 +75,6 @@ export function ProductCard({ product }: ProductCardProps) {
           <Button 
             className="w-full rounded-xl shadow-lg" 
             onClick={(e) => {
-              e.preventDefault();
               handleAddToCart();
             }}
             disabled={!hasStock}
@@ -81,8 +83,8 @@ export function ProductCard({ product }: ProductCardProps) {
           </Button>
         </div>
         {/* Gradient Overlay for text readability if needed */}
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      </Link>
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+      </div>
 
       {/* Info Container */}
       <div className="p-5 flex flex-col flex-1">

@@ -95,11 +95,11 @@ export function HeroSection() {
             transition={{ delay: 1, duration: 1 }}
             className="pt-10 flex items-center justify-center text-sm md:text-base text-muted-foreground font-medium flex-wrap gap-2 md:gap-4"
           >
-            <span>10,000+ Happy Customers</span>
+            <span>✦ Premium Quality</span>
             <span className="hidden sm:inline text-border/60">•</span>
-            <span>500+ Premium Products</span>
+            <span>Fast Delivery</span>
             <span className="hidden sm:inline text-border/60">•</span>
-            <span>4.9★ Average Rating</span>
+            <span>Easy Returns</span>
           </motion.div>
         </motion.div>
       </div>

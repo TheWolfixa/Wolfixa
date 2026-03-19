@@ -13,7 +13,7 @@ export function Footer() {
             Wolfixa.
           </Link>
           <p className="text-sm text-background/70 leading-relaxed max-w-xs">
-            Premium Electronics & Clothing for the Modern Generation
+            Your trusted store for Premium Electronics & Clothing — quality you can count on.
           </p>
         </div>
 
@@ -27,7 +27,7 @@ export function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/products?category=new" className="text-sm text-background/70 hover:text-background transition-colors">
+              <Link href="/new-arrivals" className="text-sm text-background/70 hover:text-background transition-colors">
                 New Arrivals
               </Link>
             </li>
@@ -42,7 +42,7 @@ export function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/products?category=featured" className="text-sm text-background/70 hover:text-background transition-colors">
+              <Link href="/products?featured=true" className="text-sm text-background/70 hover:text-background transition-colors">
                 Featured
               </Link>
             </li>
@@ -64,17 +64,17 @@ export function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/privacy" className="text-sm text-background/70 hover:text-background transition-colors">
+              <Link href="/privacy-policy" className="text-sm text-background/70 hover:text-background transition-colors">
                 Privacy Policy
               </Link>
             </li>
             <li>
-              <Link href="/terms" className="text-sm text-background/70 hover:text-background transition-colors">
+              <Link href="/terms-of-service" className="text-sm text-background/70 hover:text-background transition-colors">
                 Terms of Service
               </Link>
             </li>
             <li>
-              <Link href="/refund" className="text-sm text-background/70 hover:text-background transition-colors">
+              <Link href="/refund-policy" className="text-sm text-background/70 hover:text-background transition-colors">
                 Refund Policy
               </Link>
             </li>

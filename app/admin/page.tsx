@@ -10,8 +10,16 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
-import { ProductManagement } from '@/components/admin/ProductManagement';
-import { AdminSalesChart } from '@/components/admin/AdminSalesChart';
+import nextDynamic from 'next/dynamic';
+
+const ProductManagement = nextDynamic(
+  () => import('@/components/admin/ProductManagement').then(mod => ({ default: mod.ProductManagement })),
+  { ssr: false, loading: () => <div className="animate-pulse h-96 bg-muted rounded-xl" /> }
+);
+const AdminSalesChart = nextDynamic(
+  () => import('@/components/admin/AdminSalesChart').then(mod => ({ default: mod.AdminSalesChart })),
+  { ssr: false, loading: () => <div className="animate-pulse h-64 bg-muted rounded-xl" /> }
+);
 
 export const dynamic = 'force-dynamic';
 

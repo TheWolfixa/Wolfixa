@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
@@ -30,8 +31,20 @@ import {
 import { Trash2, Edit2, Plus } from 'lucide-react';
 import { toast } from 'sonner';
 
-export function ProductManagement({ initialProducts }: { initialProducts: any[] }) {
-  const [products, setProducts] = useState(initialProducts);
+export interface ProductNode {
+  id: string;
+  name: string;
+  description?: string;
+  price: number;
+  stock: number;
+  category: string;
+  images: string[];
+  is_featured: boolean;
+  rating: number;
+}
+
+export function ProductManagement({ initialProducts }: { initialProducts: ProductNode[] }) {
+  const [products, setProducts] = useState<ProductNode[]>(initialProducts);
   const [isOpen, setIsOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -71,7 +84,7 @@ export function ProductManagement({ initialProducts }: { initialProducts: any[] 
     setIsOpen(true);
   };
 
-  const handleOpenEdit = (prod: any) => {
+  const handleOpenEdit = (prod: ProductNode) => {
     setFormData({
       id: prod.id,
       name: prod.name,
@@ -203,7 +216,9 @@ export function ProductManagement({ initialProducts }: { initialProducts: any[] 
             {products.map((product) => (
               <TableRow key={product.id}>
                 <TableCell>
-                  <img src={product.images[0] || '/placeholder.png'} className="w-10 h-10 object-cover rounded-md bg-secondary" alt="" />
+                  <div className="relative w-10 h-10 rounded-md overflow-hidden bg-secondary shrink-0">
+                    <Image src={product.images?.[0] || '/placeholder.png'} fill className="object-cover" alt={product.name} sizes="40px" />
+                  </div>
                 </TableCell>
                 <TableCell className="font-medium">{product.name}</TableCell>
                 <TableCell className="capitalize">{product.category}</TableCell>
@@ -290,7 +305,7 @@ export function ProductManagement({ initialProducts }: { initialProducts: any[] 
                 <div className="flex gap-4 items-center">
                   {formData.image_url ? (
                     <div className="relative w-20 h-20 rounded-xl overflow-hidden shrink-0 border border-border">
-                      <img src={formData.image_url} alt="Preview" className="object-cover w-full h-full" />
+                      <Image src={formData.image_url || '/placeholder.png'} alt="Preview" fill className="object-cover" sizes="80px" />
                     </div>
                   ) : (
                     <div className="w-20 h-20 rounded-xl bg-secondary flex items-center justify-center shrink-0 border border-border border-dashed">
